@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+
+const admin = {
+  name: "CRHarding",
+  location: "NYC",
+  birthday: "01/01/1970",
+  about: "Likes long walks on the beach, puppies, and cheeseburgers.",
+  profile_picture: "https://www.mikeymo.nl/wp-content/uploads/2019/06/thor-dark-world-splash.jpg"
+}
 
 function App() {
+  const [users, setUsers] = useState([admin]);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome to CaseyBook! Coming soon! Watch out Zuck, I'm onto you!!</h1>
     </div>
   );
 }
