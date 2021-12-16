@@ -4,13 +4,15 @@ import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import User from './Components/User';
+import Users from './Components/Users';
 
 const admin = {
   name: "CRHarding",
   location: "NYC",
   birthday: "01/01/1970",
   about: "Likes long walks on the beach, puppies, and cheeseburgers.",
-  profile_picture: "https://www.mikeymo.nl/wp-content/uploads/2019/06/thor-dark-world-splash.jpg"
+  profile_picture: "https://www.mikeymo.nl/wp-content/uploads/2019/06/thor-dark-world-splash.jpg",
+  uuid: "loremipsumdolor"
 }
 
 function App() {
@@ -25,7 +27,8 @@ function App() {
             location: usr.location.city,
             birthday: usr.dob.date,
             about: usr.email,
-            profile_picture: usr.picture.medium
+            profile_picture: usr.picture.large,
+            uuid: usr.login.uuid
           }
           return normalizedUser;
         })
@@ -39,10 +42,14 @@ function App() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/profile">Profile</Link>
+        <Link to="/users">Friends Page</Link>
       </nav>
       <h1>Welcome to CaseyBook!</h1>
       <Route path="/profile">
         <User user={users[0]} />
+      </Route>
+      <Route path="/users">
+        <Users friends={users} />
       </Route>
     </div>
   );
