@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import User from './Components/User';
@@ -16,8 +16,17 @@ const admin = {
   uuid: "loremipsumdolor"
 }
 
-function App() {
+const post = {
+  title: '',
+  content: ''
+}
+
+function App(props) {
   const [users, setUsers] = useState([admin]);
+  const [formValues, setFormValues] = useState(post);
+  const [posts, setPosts] = useState([post]);
+
+  const history = useHistory();
 
   useEffect(() => {
     axios.get('https://randomuser.me/api/?results=5')
@@ -38,6 +47,17 @@ function App() {
       }).catch(err => console.error(err))
   }, [])
 
+  const change = (evt) => {
+    setFormValues({ ...formValues, [evt.target.name]: evt.target.value });
+  }
+
+  const submit = (evt) => {
+    evt.preventDefault();
+    setPosts([ ...posts, formValues ]);
+    setFormValues(post);
+    history.push('/profile');
+  }
+
   return (
     <div className="App">
       <nav>
@@ -47,13 +67,17 @@ function App() {
       </nav>
       <h1>Welcome to CaseyBook!</h1>
       <Route path="/profile">
-        <User user={users[0]} />
+        <User user={users[0]} posts={posts} />
       </Route>
       <Route path="/users">
         <Users friends={users} />
       </Route>
       <Route path="/post">
-        <PostForm />
+        <PostForm
+          change={change}
+          submit={submit}
+          formValues={formValues}
+        />
       </Route>
     </div>
   );
