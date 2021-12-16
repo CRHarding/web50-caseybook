@@ -1,6 +1,7 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
+import axios from 'axios';
 
 import User from './Components/User';
 
@@ -14,6 +15,24 @@ const admin = {
 
 function App() {
   const [users, setUsers] = useState([admin]);
+
+  useEffect(() => {
+    axios.get('https://randomuser.me/api/?results=5')
+      .then(resp => {
+        const newUsers = resp.data.results.map(usr => {
+          const normalizedUser = {
+            name: usr.name.first,
+            location: usr.location.city,
+            birthday: usr.dob.date,
+            about: usr.email,
+            profile_picture: usr.picture.medium
+          }
+          return normalizedUser;
+        })
+
+        setUsers([ admin, ...newUsers ])
+      }).catch(err => console.error(err))
+  }, [])
 
   return (
     <div className="App">
