@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 
+import User from './Components/User';
+
 const admin = {
   name: "CRHarding",
   location: "NYC",
@@ -15,7 +17,14 @@ function App() {
 
   return (
     <div className="App">
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/profile">Profile</Link>
+      </nav>
       <h1>Welcome to CaseyBook!</h1>
+      <Route path="/profile">
+        <User user={users[0]} />
+      </Route>
       <div className="user-profile-wrapper">
         <h2>{users[0].name}</h2>
         <img src={users[0].profile_picture} alt="user" />
