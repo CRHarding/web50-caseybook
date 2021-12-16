@@ -11,10 +11,15 @@ const admin = {
 
 function App() {
   const [users, setUsers] = useState([admin]);
-  
+
   return (
     <div className="App">
-      <h1>Welcome to CaseyBook! Coming soon! Watch out Zuck, I'm onto you!!</h1>
+      <h1>Welcome to CaseyBook!</h1>
+      <div className="user-profile-wrapper">
+        <h2>{users[0].name}</h2>
+        <img src={users[0].profile_picture} alt="user" />
+        <p>{users[0].about}</p>
+      </div>
     </div>
   );
 }
