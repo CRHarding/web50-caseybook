@@ -25,11 +25,6 @@ function App() {
       <Route path="/profile">
         <User user={users[0]} />
       </Route>
-      <div className="user-profile-wrapper">
-        <h2>{users[0].name}</h2>
-        <img src={users[0].profile_picture} alt="user" />
-        <p>{users[0].about}</p>
-      </div>
     </div>
   );
 }

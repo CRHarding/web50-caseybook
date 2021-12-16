@@ -1,3 +1,7 @@
+body {
+  margin: 25px;
+}
+
 .App {
   text-align: center;
 }
@@ -6,4 +10,20 @@ img {
   max-width: 100%;
   object-fit: cover;
   height: 350px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 15px;
+}
+
+nav a:hover {
+  background-color: lemonchiffon;
 }
