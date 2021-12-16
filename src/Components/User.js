@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const User = (props) => {
   return (
@@ -6,6 +7,7 @@ const User = (props) => {
       <h2>{props.user.name}</h2>
       <img src={props.user.profile_picture} alt="user" />
       <p>{props.user.about}</p>
+      <Link to="/post">Create a post</Link>
     </div>
   )
 }

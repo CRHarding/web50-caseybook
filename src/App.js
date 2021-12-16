@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import User from './Components/User';
 import Users from './Components/Users';
+import PostForm from './Components/PostForm';
 
 const admin = {
   name: "CRHarding",
@@ -50,6 +51,9 @@ function App() {
       </Route>
       <Route path="/users">
         <Users friends={users} />
+      </Route>
+      <Route path="/post">
+        <PostForm />
       </Route>
     </div>
   );
